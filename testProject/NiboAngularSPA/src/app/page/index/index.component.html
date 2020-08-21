@@ -1,0 +1,28 @@
+<div class="col-lg">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Type</th>
+                <th scope="col">Value</th>
+                <th scope="col">Description</th>
+                <th scope="col">Account Id - Type - Bank </th>
+            </tr>
+        </thead>
+        <tbody *ngIf="pageObj.length > 0">
+            <tr class="table-default" *ngFor="let item of pageObj">
+                <td>{{item.id}}</td>
+                <td class="text-right">{{item.transactionType}}</td>
+                <td class="text-right">{{item.transactionValue}}</td>
+                <td class="text-right">{{item.description}}</td>
+                <td class="text-right">{{item.account.accountId + '-' + item.account.accountType + '-' + item.account.bankId}}</td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="pageObj.length == 0">
+            <tr class="table-default">
+                <td colspan="5" class="text-center">Nenhum registro encontrado</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
