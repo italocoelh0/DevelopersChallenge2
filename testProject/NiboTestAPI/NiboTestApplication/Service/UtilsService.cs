@@ -10,6 +10,11 @@ namespace NiboTestApplication.Utils
 {
     public class UtilsService : iUtilsService
     {
+        /// <summary>
+        /// Create new xml string from ofx file content
+        /// </summary>
+        /// <param name="ofxLines">string array that's read line by line from ofx file</param>
+        /// <returns></returns>
         public string ConvertOFXtoXml(string[] ofxLines)
         {
             string fileStr = "<DtoData>";
@@ -52,6 +57,12 @@ namespace NiboTestApplication.Utils
             return fileStr;
         }
 
+        /// <summary>
+        /// Use XML string to get new object
+        /// </summary>
+        /// <typeparam name="T">Type of object that's returned</typeparam>
+        /// <param name="xmlStr">XML string converted from ofx file</param>
+        /// <returns></returns>
         public T ConvertXmltoObject<T>(string xmlStr)
         {
             if (string.IsNullOrEmpty(xmlStr))
@@ -65,6 +76,11 @@ namespace NiboTestApplication.Utils
             return (T)Convert.ChangeType(obj, typeof(T));
         }
     
+        /// <summary>
+        /// Aux. method to transform ofx file date string format [yyyymmddhhmmss] in c# format [yyyy-mm-ddThh:MM:ss]
+        /// </summary>
+        /// <param name="ofxDateStr"></param>
+        /// <returns></returns>
         public DateTime ConvertOfxDateStrtoDateTime(string ofxDateStr)
         {
             string year = ofxDateStr.Substring(0,4);

@@ -1,6 +1,15 @@
-<form>
-    <div class="form-group">
-        <label for="lblFile">Select File</label>
-        <input type="file" class="form-control-file" id="inputFile">
+<div class="card">
+    <div class="card-header">
+        <b>Importar Arquivos</b>
     </div>
-</form>
+    <div class="card-body">
+        <div class="form-group">
+            <label class="btn btn-default">Selecione os Arquivos</label>
+            <input class="form-control-file" type="file" multiple (change)="selectFiles($event)" />
+        </div>
+        <div class="row col-lg justify-content-center">
+            <button class="btn btn-outline-success m-1" (click)="uploadFiles()">Importar</button>
+            <button class="btn btn-danger m-1" (click)="closeDialog()">Cancelar</button>
+        </div>
+    </div>
+</div>

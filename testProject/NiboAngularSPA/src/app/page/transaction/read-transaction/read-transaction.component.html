@@ -1,0 +1,76 @@
+<div class="header justify-content-start">
+    <h2>Controle de Transações</h2>
+    <hr>
+</div>
+
+<div class="row col-lg">
+    <div class="form-group col-lg">
+        <label>Data Inicial</label>
+        <input type="date" [(ngModel)]="filterObj.initialDateInterval" class="form-control">
+    </div>
+
+    <div class="form-group col-lg">
+        <label>Data Final</label>
+        <input type="date" [(ngModel)]="filterObj.finalDateInterval" class="form-control">
+    </div>
+
+    <div class="form-group col-lg">
+        <label>Tipo de Transação</label>
+        <select [(ngModel)]="transTypeId" class="form-control" (change)="transTypeChanged($event)">
+      <option value="">Todos</option>
+      <option *ngFor="let item of transTypeObj" value="{{item.transactionTypeId}}">{{item.transactionTypeDesc}}</option>
+    </select>
+    </div>
+
+    <div class="form-group col-lg">
+        <label for="filterObj.accountId">Conta</label>
+        <input [(ngModel)]="filterObj.accountId" class="form-control">
+    </div>
+</div>
+
+<div class="row col-lg justify-content-center">
+    <button class="btn btn-outline-success m-1" (click)="readTransactions()">Filtrar Dados</button>
+    <button class="btn btn-outline-info m-1" (click)="newTransaction()">Nova Transação</button>
+    <button class="btn btn-outline-primary m-1" (click)="importFiles()">Importar Dados</button>
+</div>
+
+<hr>
+
+<div class="col-lg justify-content-center">
+    <table class="table">
+        <thead class="thead text-center">
+            <tr>
+                <th scope="col">Conta</th>
+                <th scope="col">Tipo Transação</th>
+                <th scope="col">Valor Transação</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Data Transação</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="transactionsObj.length > 0">
+            <tr class="table-default" *ngFor="let item of pagedResult">
+                <td class="text-center">{{item.accountId + ' - ' + item.account.accountType}}</td>
+                <td class="text-center">{{item.transactionType.transactionTypeDesc}}</td>
+                <td class="text-center">{{item.transactionValue}}</td>
+                <td class="text-center">{{item.description}}</td>
+                <td class="text-center">{{item.datePosted}}</td>
+                <td>
+                    <button class="btn btn-outline-secondary btn-sm m-1" type="button" (click)="editTransaction(item)">Editar</button>
+                    <button class="btn btn-outline-danger btn-sm m-1" type="button" (click)="deleteTransaction(item)">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="transactionsObj.length == 0">
+            <tr class="table-default">
+                <td colspan="6" class="text-center">Nenhum registro encontrado</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <mat-paginator [length]="this.transactionsObj.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)" (selectedValueChange)="onPageChange($event)">
+    </mat-paginator>
+</div>

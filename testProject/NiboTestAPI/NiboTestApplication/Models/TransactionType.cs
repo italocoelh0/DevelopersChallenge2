@@ -5,12 +5,10 @@ using System.Text;
 
 namespace NiboTestApplication.Models
 {
-    public class Account
+    public class TransactionType
     {
         [Key]
-        public ulong AccountId { get; set; }
-        public string AccountType { get; set; }
-        public int BankId { get; set; }
-
+        public int TransactionTypeId { get; set; }
+        public string TransactionTypeDesc { get; set; }
     }
 }

@@ -1,24 +1,26 @@
-import { DecimalPipe } from '@angular/common';
-import { AccountModel } from './account.interface';
+import { Account } from './account.interface';
+import { TransactionType } from './transactiontypes.interface';
 
 export interface Transaction {
   id: number;
-  transactionType: string;
+  transactionTypeId: number;
   transactionValue: number;
   description: string;
   accountId: number;
   datePosted: Date;
 
-  account: AccountModel;
+  account: Account;
+  transactionType : TransactionType;
 }
 
-export class TransactionModel {
+export class TransactionModel implements TransactionModel {
   id: number;
-  transactionType: string;
+  transactionTypeId: number;
   transactionValue: number;
   description: string;
   accountId: number;
   datePosted: Date;
 
-  account: AccountModel;
+  account: Account;
+  transactionType : TransactionType;
 }

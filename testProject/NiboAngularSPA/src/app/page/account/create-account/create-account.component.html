@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-header">
+        <b>Nova Conta</b>
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="onFormSubmit(newAccountForm.valid)" #newAccountForm="ngForm">
+            <div class="form-group">
+                <label>Tipo de Conta</label>
+                <input class="form-control" type="text" [(ngModel)]="accType" name="accType" required>
+            </div>
+            <div class="form-group">
+                <label>Banco</label>
+                <input class="form-control" type="number" [(ngModel)]="bnkId" name="bankId" required>
+            </div>
+            <div class="col-lg justify-content-center">
+                <button class="btn btn-outline-success m-1" type="submit">Salvar</button>
+                <button class="btn btn-danger m-1" type="button" (click)="closeDialog()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

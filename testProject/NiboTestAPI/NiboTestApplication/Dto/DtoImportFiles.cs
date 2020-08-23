@@ -4,9 +4,8 @@ using System.Text;
 
 namespace NiboTestApplication.Dto
 {
-    public class DtoDataImport
+    public class DtoImportFiles
     {
-        public string FileName { get; set; }
-        public byte[] File { get; set; }
+        public List<byte[]> FileList { get; set; }
     }
 }

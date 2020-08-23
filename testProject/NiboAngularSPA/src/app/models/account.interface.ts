@@ -1,12 +1,10 @@
 export interface Account {
-  id: number;
   accountId: number;
   accountType: string;
   bankId: number;
 }
 
-export class AccountModel {
-  id: number;
+export class AccountModel implements Account{
   accountId: number;
   accountType: string;
   bankId: number;

@@ -20,18 +20,20 @@ namespace NiboTestAPI
         }
 
         public IConfiguration Configuration { get; }
+
         readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("DataBase"));
+
             services.AddScoped<DataContext, DataContext>();
             services.AddScoped<iUtilsService, UtilsService>();
 
+            services.AddTransient<iTransactionService, TransactionService>();
+            services.AddTransient<IAccountService, AccountService>();
+
             services.AddControllers();
-            services.AddTransient<IDataService, DataService>();
 
             services.AddSwaggerGen(c =>
             {
@@ -52,7 +54,6 @@ namespace NiboTestAPI
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();

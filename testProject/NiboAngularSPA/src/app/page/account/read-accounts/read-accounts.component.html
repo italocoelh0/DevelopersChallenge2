@@ -1,0 +1,44 @@
+<div class="header justify-content-start">
+    <h2>Controle de Contas</h2>
+    <hr>
+</div>
+
+<div class="row col-lg justify-content-center">
+    <button class="btn btn-outline-success m-1" (click)="readAccounts()">Buscar</button>
+    <button class="btn btn-outline-info m-1" (click)="newAccount()">Nova Conta</button>
+</div>
+
+<div class="col-lg justify-content-center">
+    <table class="table">
+        <thead class="thead text-center">
+            <tr>
+                <th scope="col">Conta</th>
+                <th scope="col">Tipo da Conta</th>
+                <th scope="col">Banco</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="accountsObj.length > 0">
+            <tr class="table-default" *ngFor="let item of pagedResult">
+                <td class="text-center">{{item.accountId}}</td>
+                <td class="text-center">{{item.accountType}}</td>
+                <td class="text-center">{{item.bankId}}</td>
+                <td class="text-center">
+                    <button class="btn btn-outline-secondary btn-sm m-1" type="button" (click)="editAccount(item)">Editar</button>
+                    <button class="btn btn-outline-danger btn-sm m-1" type="button" (click)="deleteAccount(item)">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="accountsObj.length == 0">
+            <tr class="table-default">
+                <td colspan="3" class="text-center">Nenhum registro encontrado</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <mat-paginator [length]="this.accountsObj.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)" (selectedValueChange)="onPageChange($event)">
+    </mat-paginator>
+</div>

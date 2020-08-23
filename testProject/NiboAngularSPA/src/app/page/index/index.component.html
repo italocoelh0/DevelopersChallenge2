@@ -1,28 +1,31 @@
-<div class="col-lg">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Type</th>
-                <th scope="col">Value</th>
-                <th scope="col">Description</th>
-                <th scope="col">Account Id - Type - Bank </th>
-            </tr>
-        </thead>
-        <tbody *ngIf="pageObj.length > 0">
-            <tr class="table-default" *ngFor="let item of pageObj">
-                <td>{{item.id}}</td>
-                <td class="text-right">{{item.transactionType}}</td>
-                <td class="text-right">{{item.transactionValue}}</td>
-                <td class="text-right">{{item.description}}</td>
-                <td class="text-right">{{item.account.accountId + '-' + item.account.accountType + '-' + item.account.bankId}}</td>
-            </tr>
-        </tbody>
+<div class="text-center">
+    <h1><b>Bem Vindos</b></h1>
+    <hr>
 
-        <tbody *ngIf="pageObj.length == 0">
-            <tr class="table-default">
-                <td colspan="5" class="text-center">Nenhum registro encontrado</td>
-            </tr>
-        </tbody>
-    </table>
+    <h3><b>Funcionalidades Manuais Implementadas</b></h3>
+    <hr>
+    <h4><b>Transações</b></h4>
+    <p>-- Importação de dados por meio de arquivos com extensão '.ofx' --</p>
+    <p>-- Cadastro de Transações --</p>
+    <p>-- Edição de Transações --</p>
+    <p>-- Exclusão de Transações --</p>
+    <p>-- Consulta de Transações --</p>
+
+    <br>
+
+    <h4><b>Contas</b></h4>
+    <p>-- Cadastro de Contas --</p>
+    <p>-- Edição de Contas --</p>
+    <p>-- Exclusão de Contas --</p>
+    <p>-- Consulta de Contas --</p>
+
+    <br>
+
+    <hr>
+    <h3><b>Funcionalidades Automáticas Implementadas</b></h3>
+    <hr>
+    <p>-- Criação dos 'Tipos de Transação' conforme recuperado do arquivo '.ofx' --</p>
+    <p>-- Criação de contas caso a conta informada no arquivo '.ofx' ainda não exista no sistema --</p>
+    <p>-- Verifica a existência de uma possível transação duplicada antes de inserir um nova transação --</p>
+    <p>-- Verifica a existência de uma possível conta duplicada antes de inserir uma nova conta --</p>
 </div>

@@ -9,11 +9,12 @@ namespace NiboTestApplication.Models
     {
         [Key]
         public int Id { get; set; }
-        public string TransactionType { get; set; }
+        public int? TransactionTypeId { get; set; }
         public decimal TransactionValue { get; set; }
         public string Description { get; set; }
         public ulong AccountId { get; set; }
         public DateTime? DatePosted { get; set; }
         public Account Account { get; set; }
+        public TransactionType TransactionType { get; set; }
     }
 }
