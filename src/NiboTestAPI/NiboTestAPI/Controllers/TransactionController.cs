@@ -71,6 +71,12 @@ namespace NiboTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Create new transaction
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("createTransaction")]
         public ActionResult<DtoDefaultResponse> CreateTransaction([FromServices] DataContext context, [FromBody]Transaction dto)
@@ -91,9 +97,7 @@ namespace NiboTestAPI.Controllers
         }
 
         /// <summary>
-        /// Get all transactions.
-        /// If all parameters are null, you'll get all transactions
-        /// Else, get only transactions with selected parameters
+        /// Get transactions according to parameters entered
         /// </summary>
         /// <param name="context"></param>
         /// <param name="dto"></param>
@@ -117,6 +121,12 @@ namespace NiboTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Update selected transactions
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("updateTransaction")]
         public ActionResult<DtoDefaultResponse> UpdateTransaction([FromServices] DataContext context, [FromBody]Transaction dto)
@@ -136,6 +146,12 @@ namespace NiboTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete selected transaction
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("deleteTransaction")]
         public ActionResult<DtoDefaultResponse> DeleteTransaction([FromServices] DataContext context, [FromBody]Transaction dto)

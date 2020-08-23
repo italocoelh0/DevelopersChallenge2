@@ -18,6 +18,12 @@ namespace NiboTestAPI.Controllers
 
         public IAccountService _accService { get; set; }
 
+        /// <summary>
+        /// Create new account
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("createAccount")]
         public ActionResult<DtoDefaultResponse> CreateAccount([FromServices] DataContext context, [FromBody]Account dto)
@@ -37,6 +43,12 @@ namespace NiboTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Get accounts according to parameters entered
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("readAccounts")]
         public ActionResult<DtoDefaultResponse> ReadAccount([FromServices] DataContext context, [FromBody]DtoAccountRead dto)
@@ -56,6 +68,12 @@ namespace NiboTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Update account informations
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("updateAccount")]
         public ActionResult<DtoDefaultResponse> UpdateAccount([FromServices] DataContext context, [FromBody]Account dto)
@@ -75,6 +93,12 @@ namespace NiboTestAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete selected account and deleted transactions related to informed account
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("deleteAccount")]
         public ActionResult<DtoDefaultResponse> DeleteAccount([FromServices] DataContext context, [FromBody]Account dto)
